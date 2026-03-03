@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Calculator | Glassmorphism</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body>
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <main class="calculator-wrapper">
+        <header class="calc-header">
+            <div class="header-left">
+                <button id="theme-toggle" class="icon-btn" title="Toggle Theme">
+                    <ion-icon name="moon-outline" id="theme-icon"></ion-icon>
+                </button>
+                <button id="mode-toggle" class="icon-btn" title="Scientific Mode">
+                    <span class="mode-text">Sci</span>
+                </button>
+            </div>
+            <button id="history-toggle" class="icon-btn" title="Toggle History">
+                <ion-icon name="time-outline"></ion-icon>
+            </button>
+        </header>
+
+        <section class="display-container">
+            <div id="previous-expression" class="expression"></div>
+            <input type="text" id="current-display" class="current-value" value="0" spellcheck="false"
+                autocomplete="off">
+            <button id="copy-btn" class="copy-btn" title="Copy Result">
+                <ion-icon name="copy-outline"></ion-icon>
+            </button>
+        </section>
+
+        <!-- Scientific Buttons Panel (Hidden by default) -->
+        <section id="scientific-btns" class="scientific-grid hidden">
+            <button class="btn sci-btn" data-func="sin">sin</button>
+            <button class="btn sci-btn" data-func="cos">cos</button>
+            <button class="btn sci-btn" data-func="tan">tan</button>
+            <button class="btn sci-btn" data-constant="pi">π</button>
+
+            <button class="btn sci-btn" data-func="log">log</button>
+            <button class="btn sci-btn" data-func="ln">ln</button>
+            <button class="btn sci-btn" data-action="parenthesis" data-value="(">(</button>
+            <button class="btn sci-btn" data-action="parenthesis" data-value=")">)</button>
+
+            <button class="btn sci-btn" data-func="sqrt">√</button>
+            <button class="btn sci-btn" data-func="cbrt">∛</button>
+            <button class="btn sci-btn" data-func="square">x²</button>
+            <button class="btn sci-btn" data-func="cube">x³</button>
+
+            <button class="btn sci-btn" data-operator="**">xʸ</button>
+            <button class="btn sci-btn" data-func="abs">|x|</button>
+            <button class="btn sci-btn" data-func="fact">n!</button>
+            <button class="btn sci-btn" data-constant="e">e</button>
+        </section>
+
+        <section class="buttons-grid">
+            <!-- Row 1 -->
+            <button class="btn func" data-action="clear">C</button>
+            <button class="btn func" data-action="delete"><ion-icon name="backspace-outline"></ion-icon></button>
+            <button class="btn func" data-operator="%">%</button>
+            <button class="btn op" data-operator="/">÷</button>
+
+            <!-- Row 2 -->
+            <button class="btn" data-number="7">7</button>
+            <button class="btn" data-number="8">8</button>
+            <button class="btn" data-number="9">9</button>
+            <button class="btn op" data-operator="*">×</button>
+
+            <!-- Row 3 -->
+            <button class="btn" data-number="4">4</button>
+            <button class="btn" data-number="5">5</button>
+            <button class="btn" data-number="6">6</button>
+            <button class="btn op" data-operator="-">−</button>
+
+            <!-- Row 4 -->
+            <button class="btn" data-number="1">1</button>
+            <button class="btn" data-number="2">2</button>
+            <button class="btn" data-number="3">3</button>
+            <button class="btn op" data-operator="+">+</button>
+
+            <!-- Row 5 -->
+            <button class="btn" data-number="0">0</button>
+            <button class="btn" data-number=".">.</button>
+            <button class="btn eq" data-action="calculate">=</button>
+        </section>
+
+        <aside id="history-panel" class="history-panel">
+            <div class="history-header">
+                <button id="close-history" class="icon-btn" title="Close History">
+                    <ion-icon name="chevron-back-outline"></ion-icon>
+                </button>
+                <h3>History</h3>
+                <button id="clear-history" class="icon-btn" title="Clear History">
+                    <ion-icon name="trash-outline"></ion-icon>
+                </button>
+            </div>
+            <div id="history-list" class="history-list">
+                <!-- History items will be injected here -->
+                <p class="empty-msg">No history yet</p>
+            </div>
+        </aside>
+    </main>
+
+    <div id="toast" class="toast">Result copied to clipboard!</div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
